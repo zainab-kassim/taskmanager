@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 
 
-export function SharedSidebar({ todos, setTodos }) {
+export function SharedSideBar({ todos, setTodos }) {
     const [SearchValue, setSearchValue] = useState('');
     const navigate = useNavigate()
 

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import { Todo } from './types/todo';
-import { SharedSidebar } from './components/shared/SharedSidebar.tsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {SharedSideBar} from './components/shared/SharedSideBar.tsx'
 import AddTodo from './components/shared/AddTodo.tsx';
 import StarredTodo from './components/shared/StarredTodo.tsx'
 import ImportantTodo from './components/shared/ImportantTodo.tsx'
@@ -29,7 +29,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SharedSidebar todos={todos} setTodos={setTodos} />}>
+          <Route path="/" element={<SharedSideBar todos={todos} setTodos={setTodos} />}>
             <Route index element={<AddTodo todos={todos} setTodos={setTodos} />} />
             <Route path="/starred" element={<StarredTodo todos={todos} setTodos={setTodos} />} />
             <Route path="/completed" element={<CompletedTodo todos={todos} setTodos={setTodos} />} />
