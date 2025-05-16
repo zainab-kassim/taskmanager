@@ -3,4 +3,6 @@ export interface Todo {
   text: string;
   isCompleted: boolean;
   starred: boolean;
+  isImportant:boolean;
 }
+

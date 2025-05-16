@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import { Todo } from './types/todo';
-import { SidebarDemo } from './components/shared/sharedSideBar.tsx';
-import { SearchRegular } from '@fluentui/react-icons';
+import { SharedSidebar } from './components/shared/SharedSidebar.tsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AddTodo from './components/shared/AddTodo.tsx';
-import Filter from './components/shared/Filters.tsx';
-import TodoList from './components/shared/TodoList.tsx';
-import TodoItem from './components/shared/TodoItem.tsx';
+import StarredTodo from './components/shared/StarredTodo.tsx'
+import ImportantTodo from './components/shared/ImportantTodo.tsx'
+import FilterTodo from './components/shared/FilterTodo.tsx'
+import TodoItem from './components/shared/TodoItem.tsx'
+import CompletedTodo from './components/shared/CompletedTodo.tsx'
 
 
 
@@ -23,58 +24,21 @@ function App() {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
-  // Add this useEffect to load todos from localStorage when the app starts
-  useEffect(() => {
-    const savedTodos = localStorage.getItem('todos');
-    if (savedTodos) {
-      setTodos(JSON.parse(savedTodos));
-      console.log(todos);
-    }
-  }, []);
 
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SidebarDemo />}>
-            <Route index element={<AddTodo />} />
-            <Route path="starred" element={<Filter />} />
-            <Route path="completed" element={<TodoItem />} />
-            <Route path="important" element={<TodoItem />} />
+          <Route path="/" element={<SharedSidebar todos={todos} setTodos={setTodos} />}>
+            <Route index element={<AddTodo todos={todos} setTodos={setTodos} />} />
+            <Route path="/starred" element={<StarredTodo todos={todos} setTodos={setTodos} />} />
+            <Route path="/completed" element={<CompletedTodo todos={todos} setTodos={setTodos} />} />
+            <Route path="/important" element={<ImportantTodo todos={todos} setTodos={setTodos} />} />
+            <Route path="/search/:SearchValue" element={<FilterTodo todos={todos} setTodos={setTodos} />} />
+            <Route path="/todo/:id" element={<TodoItem todos={todos} setTodos={setTodos} />} />
           </Route>
         </Routes>
       </BrowserRouter>
-
-
-      {/* <div>
-        {filteredTodos && filteredTodos.length > 0 ? (
-          filteredTodos.map((todo, id) => (
-            <div key={id}>
-              <span
-                onClick={() => handleToggleComplete(todo.id)}
-                className={`rounded-full w-4 h-4 flex items-center justify-center cursor-pointer transition-colors ${todo.isCompleted ? 'bg-blue-600' : 'bg-white border border-black'}`}
-              >
-                {todo.isCompleted && <Checkmark24Regular className='text-white size-3 font-black stroke-[3]' />}
-              </span>
-
-              <span className={todo.isCompleted ? 'line-through text-gray-500' : ''}>{todo.text}</span>
-              <button onClick={() => HandleUpdateTodos(todo.id)}><EditRegular /> </button>
-              <button onClick={() => HandleTodoDelete(todo.id)} className='text-red-700' ><DeleteRegular /></button>
-              <button onClick={() => handleToggleStar(todo.id)}>
-                {todo.starred ? (
-                  <Star12Filled className='text-yellow-500 size-4 stroke-[3]' />
-                ) : (
-                  <Star12Regular className='size-4 font-black stroke-[3] text text-black' />
-                )}
-              </button>
-            </div>
-          ))
-        ) : (
-          <div>
-            <p>no matching todos found</p>
-          </div>
-        )} */}
-
     </div>
   );
 }
