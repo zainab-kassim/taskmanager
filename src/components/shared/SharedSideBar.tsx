@@ -1,4 +1,4 @@
-"use client";
+import React from 'react';
 import { useEffect, useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "../ui/sidebar.tsx";
 import { cn } from "../../lib/utils.ts";
