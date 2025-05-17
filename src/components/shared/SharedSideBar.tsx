@@ -71,7 +71,7 @@ export function SharedSideBar({ todos, setTodos }) {
 
                 <div className='flex  relative items-center'>
                     <input className='w-[40vw] border  border-slate-700 rounded-md  outline-none pl-4 py-2 pr-8  [&::-webkit-search-cancel-button]:hidden' type="search" value={SearchValue} placeholder='search' onChange={(e) => setSearchValue(e.target.value)} />
-                    <button onClick={() => navigate(`/search/${SearchValue}`)}><SearchRegular className='size-7 stroke-[5] absolute right-2 bottom-1.5 text-black' /></button>
+                    <button onClick={() =>{ navigate(`/search/${SearchValue}`); setSearchValue('')}}><SearchRegular className='size-7 stroke-[5] absolute right-2 bottom-1.5 text-black' /></button>
                 </div>
             </div>
 
