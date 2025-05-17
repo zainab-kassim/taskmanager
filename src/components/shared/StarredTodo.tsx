@@ -32,9 +32,7 @@ function StarredTodo({ todos, setTodos }) {
       {starredTodos && starredTodos.length > 0 ? (starredTodos.map((todo: Todo) => (
         <div key={todo.id} className="flex justify-between items-center py-5 px-5 border rounded-md bg-white shadow-md mb-4">
           <div className="flex items-center gap-3">
-            <span
-              onClick={() => HandleToggleComplete(todo.id)}
-              className={`rounded-full w-4 h-4 flex items-center justify-center cursor-pointer transition-colors ${todo.isCompleted ? 'bg-blue-600' : 'bg-white border border-black'}`}
+            <span onClick={() => HandleToggleComplete(todo.id)} className={`rounded-full w-4 h-4 flex items-center justify-center cursor-pointer transition-colors ${todo.isCompleted ? 'bg-blue-600' : 'bg-white border border-black'}`}
             >
               {todo.isCompleted && <Checkmark24Regular className='text-white size-3 font-black stroke-[3]' />}
             </span>

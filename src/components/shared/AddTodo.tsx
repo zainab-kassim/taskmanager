@@ -31,8 +31,8 @@ function AddTodo({ todos, setTodos }) {
 
     function HandleAddTodos() {
         try {
-            const newTodos = [...todos, { id: uuidv4(), text: inputValue, isCompleted: false, starred: false, isImportant: false }];
-            setTodos(newTodos);
+            const newTodos = { id: uuidv4(), text: inputValue, isCompleted: false, starred: false, isImportant: false };
+            setTodos([newTodos, ...todos]);
             setInputValue('');
         } catch (error) {
             console.log(error);

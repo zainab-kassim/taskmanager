@@ -6,14 +6,9 @@ import { useEffect, useState } from 'react';
 import { compileFunction } from 'vm';
 
 function CompletedTodo({ todos, setTodos }) {
-
     const completedTodos = todos.filter(todo => todo.isCompleted);
   
- 
-
-
-
-  function HandleToggleImportant(id: string) {
+  function HandleToggleComplete(id: string) {
     const newTodos = todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, isCompleted: !todo.isCompleted };
@@ -40,7 +35,7 @@ function CompletedTodo({ todos, setTodos }) {
           <div key={todo.id} className="flex justify-between items-center py-5 px-5 border rounded-md bg-white shadow-md mb-4">
             <div className="flex items-center gap-3">
               <span
-                onClick={() => HandleToggleImportant(todo.id)}
+                onClick={() => HandleToggleComplete(todo.id)}
                 className={`rounded-full w-4 h-4 flex items-center justify-center cursor-pointer transition-colors ${todo.isCompleted ? 'bg-blue-600' : 'bg-white border border-black'}`}
               >
                 {todo.isCompleted && <Checkmark24Regular className='text-white size-3 font-black stroke-[3]' />}

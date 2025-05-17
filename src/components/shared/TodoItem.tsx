@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Todo } from '../../types/todo'
-import { Checkmark24Regular, Flag16Filled, Flag16Regular, Star12Filled,Star16Regular } from '@fluentui/react-icons'
+import { Checkmark24Regular, Flag16Filled, Flag16Regular, Star12Filled, Star16Regular } from '@fluentui/react-icons'
 import { TrashIcon } from 'lucide-react'
 
 function TodoItem({ todos, setTodos }) {
@@ -71,13 +71,18 @@ function TodoItem({ todos, setTodos }) {
 
 
     return (
-        <div className={`pb-5 px-10 w-1/2 rounded-md bg-white shadow-md ${TodoItem.isCompleted ? 'border-t-[6px] border-blue-600' : ' pt-5'} `}>
-            <div onClick={() => HandleToggleComplete(TodoItem.id)} className="flex items-center py-5 pl-5">
-                <span className={`rounded-full size-7  flex items-center justify-center cursor-pointer transition-colors ${TodoItem.isCompleted ? 'bg-blue-600' : 'bg-white border border-black'}`}
-                >
-                    {TodoItem.isCompleted && <Checkmark24Regular className='text-white size-7 font-black stroke-[3]' />}
+        <div className={`pb-5 px-10 xl:w-1/2 mx-2 mt-5 rounded-lg bg-white shadow-md ${TodoItem.isCompleted ? 'border-t-[6px] border-blue-600' : ' pt-5'} `}>
+            <div onClick={() => HandleToggleComplete(TodoItem.id)} className="flex items-center py-5 pl-5 ">
+                <span  className="relative inline-flex items-center justify-center cursor-pointer">
+                    {TodoItem.isCompleted ? (
+                        <div className="bg-blue-600 rounded-full size-6 flex items-center justify-center transition-colors">
+                            <Checkmark24Regular className="text-white size-5 font-black stroke-[5]" />
+                        </div>
+                    ) : (
+                        <div className="bg-white border border-black rounded-full size-6 transition-colors" />
+                    )}
                 </span>
-                <span className={`text-2xl pl-4 ${TodoItem.isCompleted ? 'line-through text-gray-500' : ''}`}>
+                <span className={`text-2xl pl-4 ${TodoItem.isCompleted ? 'line-through text-gray-500' : 'tracking-tight'}`}>
                     {TodoItem.text}
                 </span>
             </div>

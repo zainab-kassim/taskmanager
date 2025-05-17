@@ -24,7 +24,6 @@ export function SharedSideBar({ todos, setTodos }) {
     // save todos to localStorage whenever they change
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos));
-        console.log(todos)
     }, [todos]);
 
 
