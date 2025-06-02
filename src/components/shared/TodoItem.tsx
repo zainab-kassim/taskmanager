@@ -65,7 +65,7 @@ function TodoItem({ todos, setTodos }) {
         });
 
         // Navigate back to the tasks list page (adjust the path as needed)
-        navigate('/tasks');
+        navigate('/');
     }
 
 
